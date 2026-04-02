@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="#" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="container_header">
+        <img src="./imagens/1773186175021.png">
+        <ul id="navbar">
+            <li>
+                <a href="#" onclick="aviso()">Sobre Nos</a>
+            </li>
+            <li>
+                <a href="#" onclick="aviso()">Simulador</a>
+            </li>
+            <li>
+                <a href="#" onclick="aviso()">GitHub</a>
+            </li>
+            <li>
+                <a href="#" onclick="aviso()">Fale Conosco</a>
+            </li>
+            <li>
+                <a href="#" onclick="aviso()">Login</a>
+            </li>
+            <li>
+                <a href="#" onclick="aviso()">Cadastro</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="container_banner">
+            <h1>Criando Solucoes <br> para Salvar Vidas</h1>
+            <img src="./imagens/Medicos.png">
+    </div>
+
+    <div id="container_pai">
+      <div id="container">
+        <h2>Temperatura x Umidade por Hora</h2>
+          <canvas id="graficoLinhas"></canvas>
+      </div>
+  
+      <div id="container">
+        <h2>Média Mensal</h2>
+          <canvas id="graficoBarras"></canvas>
+      </div>
+    </div>
+
+    <div id="container_tabelas">
+        <div id="tabela1">
+            <h2>Temperatura x Umidade por Hora</h2>
+
+<table>
+    <tr>
+        <th id="titulos">Horário</th>
+        <th id="titulos">Temperatura</th>
+        <th id="titulos">Umidade</th>
+    </tr>
+    <tr><td>12:00</td><td>30</td><td>80</td></tr>
+    <tr><td>13:00</td><td>29</td><td>82</td></tr>
+    <tr><td>14:00</td><td>28</td><td>80</td></tr>
+    <tr><td>15:00</td><td>25</td><td>85</td></tr>
+    <tr><td>16:00</td><td>22</td><td>80</td></tr>
+    <tr><td>17:00</td><td>23</td><td>83</td></tr>
+</table>
+        </div>
+        <div id="tabela2">
+            <h2>Média Mensal</h2>
+
+<table>
+    <tr>
+        <th id="titulos">Mês</th>
+        <th id="titulos">Temperatura Média</th>
+        <th id="titulos">Umidade Média</th>
+    </tr>
+    <tr><td>Janeiro</td><td>22</td><td>90</td></tr>
+    <tr><td>Fevereiro</td><td>24</td><td>89</td></tr>
+    <tr><td>Março</td><td>27</td><td>93</td></tr>
+    <tr><td>Abril</td><td>23</td><td>87</td></tr>
+    <tr><td>Maio</td><td>20</td><td>88</td></tr>
+    <tr><td>Junho</td><td>18</td><td>82</td></tr>
+</table>
+        </div>
+    </div>
+
+
+<footer id="footer">
+    <div id="footer_container">
+
+        <div id="footer_infos">
+            <img src="./imagens/1773186175021.png" alt="">
+            <p>Lider em soluções tecnológicas.</p>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="#" onclick="aviso()">Sobre Nós</a></li>
+                <li><a href="#" onclick="aviso()">Simulador</a></li>
+                <li><a href="#" onclick="aviso()">GitHub</a></li>
+                <li><a href="#" onclick="aviso()">Contato</a></li>
+            </ul>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Contato</h3>
+            <p><b>E-Mail:</b> 📧 contato@techvita.com</p>
+            <p><b>WhatsApp:</b> 📞 (11) 99999-9999</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 TechVita Solutions</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    // ===== GRÁFICO DE LINHAS =====
+        let horarios = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+        let temperaturaHora = [30, 29, 28, 25, 22, 23];
+        let umidadeHora = [80, 82, 80, 85, 80, 83];
+
+        let ctxLinhas = document.getElementById('graficoLinhas').getContext('2d');
+        new Chart(ctxLinhas, {
+            type: 'line',
+            data: {
+                labels: horarios,
+                datasets: [
+                    {
+                        label: 'Temperatura (°C)',
+                        data: temperaturaHora,
+                        borderColor: 'red',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Umidade (%)',
+                        data: umidadeHora,
+                        borderColor: 'blue',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // ===== GRÁFICO DE BARRAS =====
+        let meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
+        let temperaturaMes = [22, 24, 27, 23, 20, 18];
+        let umidadeMes = [90, 89, 93, 87, 88, 82];
+
+        let ctxBarras = document.getElementById('graficoBarras').getContext('2d');
+        new Chart(ctxBarras, {
+            type: 'bar',
+            data: {
+                labels: meses,
+                datasets: [
+                    {
+                        label: 'Temperatura Média (°C)',
+                        data: temperaturaMes,
+                        backgroundColor: 'red'
+                    },
+                    {
+                        label: 'Umidade Média (%)',
+                        data: umidadeMes,
+                        backgroundColor: 'blue'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        function aviso() {
+            alert('Putz!! Não funciona... É apenas ilustrativo 😉');
+            alert('Em breve...')
+        }
+</script>
